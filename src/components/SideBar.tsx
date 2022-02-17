@@ -3,13 +3,14 @@ import { useGenres } from "../hooks/useGenres";
 import { Button } from '../components/Button';
 
 import '../styles/sidebar.scss';
+import { useCallback } from "react";
 
 export function SideBar() {
   const { genres, selectedGenre, updateSelectedGenre } = useGenres();
 
-  function handleClickButton(id: number) {
+  const handleClickButton = useCallback((id: number) => {
     updateSelectedGenre(id);
-  }
+  }, []);
 
   return (
     <nav className="sidebar">
